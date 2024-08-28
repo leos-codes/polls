@@ -1,9 +1,12 @@
+let DemVotes = 0;
+
 //Get States' IDs
 const mapSvg = document.getElementById("map");
 const states = mapSvg.querySelectorAll('[id]');
 const statesArray = Array.from(states).map(element => element.id);
 const loopLength = statesArray.length;
 
+//State status based on polls
 var statePolls = {
     "AL": calculateLead(38,57), // Alabama
     "AK": calculateLead(36,55), // Alaska
@@ -42,7 +45,7 @@ var statePolls = {
     "OH": calculateLead(44, 56), // Ohio
     "OK": calculateLead(30, 61), // Oklahoma
     "OR": calculateLead(45, 40), // Oregon
-    "PA": calculateLead(46.7, 44.9), // Pennsylvania
+    "PA": calculateLead(44.9, 46.7), // Pennsylvania
     "RI": calculateLead(40, 33), // Rhode Island
     "SC": calculateLead(37, 51), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
@@ -56,6 +59,61 @@ var statePolls = {
     "WI": calculateLead(47.9,44.3), // Wisconsin
     "WY": calculateLead(15, 68), // Wyoming
     "DC": calculateLead(85, 5.8)  // Washington, D.C.
+};
+
+//EC count per state
+var stateEC = {
+    "AL": 9,
+    "AK": 3,
+    "AZ": 11,
+    "AR": 6,
+    "CA": 54,
+    "CO": 10,
+    "CT": 7,
+    "DE": 3,
+    "FL": 30,
+    "GA": 16,
+    "HI": 4,
+    "ID": 4,
+    "IL": 19,
+    "IN": 11,
+    "IA": 6,
+    "KS": 6,
+    "KY": 8,
+    "LA": 8,
+    "ME": 4,
+    "MD": 10,
+    "MA": 11,
+    "MI": 15,
+    "MN": 10,
+    "MS": 6,
+    "MO": 10,
+    "MT": 4,
+    "NE": 5,
+    "NV": 6,
+    "NH": 4,
+    "NJ": 14,
+    "NM": 5,
+    "NY": 28,
+    "NC": 16,
+    "ND": 3,
+    "OH": 17,
+    "OK": 7,
+    "OR": 8,
+    "PA": 19,
+    "RI": 4,
+    "SC": 9,
+    "SD": 3,
+    "TN": 11,
+    "TX": 40,
+    "UT": 6,
+    "VT": 3,
+    "VA": 13,
+    "WA": 12,
+    "WV": 4,
+    "WI": 10,
+    "WY": 3,
+    "DC": 3
 };
 
 //Change state color based on lead
@@ -148,3 +206,19 @@ svgMap.addEventListener('mouseout', function (e)
     if (e.target.tagName === 'path') 
         hoverSquare.style.display = 'none';
 });
+
+
+//Show 270 to win
+//Change state color based on lead
+for(let i = 0; i < loopLength; i++)
+{
+    let state = statesArray[i];
+    if(statePolls[state][0] == "#71A8EB" || statePolls[state][0] == "#D2E0FB" )
+        DemVotes += stateEC[state];
+
+}//end for-loop
+
+
+var elem = document.getElementById("toWinBar");
+var width = DemVotes * 100 / 538;
+elem.style.width = width + "%";

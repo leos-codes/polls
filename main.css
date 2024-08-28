@@ -33,4 +33,30 @@ text{
     font-family:"system-ui";
     font-size:5; 
     fill:black;
+    font-weight: bold;
+}
+
+#toWin {
+    margin: auto;
+    width: 65%;
+    background-color: #d27776;
+  }
+  
+#toWinBar {
+    width: 1%;
+    height: 30px;
+    background-color: #71A8EB;
+  }
+
+#dems-lead, #rep-lead, #toWin {
+    margin: auto;    
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
