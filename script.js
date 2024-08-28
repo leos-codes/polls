@@ -5,16 +5,16 @@ const statesArray = Array.from(states).map(element => element.id);
 const loopLength = statesArray.length;
 
 var statePolls = {
-    "AL": calculateLead(38, 57), // Alabama
-    "AK": calculateLead(26, 49), // Alaska
-    "AZ": calculateLead(45.8, 44.4), // Arizona
-    "AR": calculateLead(24, 57), // Arkansas
-    "CA": calculateLead(65, 35), // California
-    "CO": calculateLead(50, 40), // Colorado
-    "CT": calculateLead(49, 40), // Connecticut
-    "DE": calculateLead(49, 40), // Delaware
-    "FL": calculateLead(43.9, 47.8), // Florida
-    "GA": calculateLead(46.6, 46.6), // Georgia
+    "AL": calculateLead(38,57), // Alabama
+    "AK": calculateLead(36,55), // Alaska
+    "AZ": calculateLead(45.8,44.1), // Arizona
+    "AR": calculateLead(24,57), // Arkansas
+    "CA": calculateLead(65,35), // California
+    "CO": calculateLead(49,39), // Colorado
+    "CT": calculateLead(46,36), // Connecticut
+    "DE": calculateLead(46,36), // Delaware
+    "FL": calculateLead(43.4,47.8), // Florida
+    "GA": calculateLead(46.6, 45.8), // Georgia
     "HI": calculateLead(42, 34), // Hawaii
     "ID": calculateLead(26, 55), // Idaho
     "IL": calculateLead(43, 34), // Illinois
@@ -31,7 +31,7 @@ var statePolls = {
     "MS": calculateLead(37, 49), // Mississippi
     "MO": calculateLead(41, 59), // Missouri
     "MT": calculateLead(39, 57), // Montana
-    "NE": calculateLead(50, 42), // Nebraska
+    "NE": calculateLead(42, 50), // Nebraska
     "NV": calculateLead(45.2, 44.4), // Nevada
     "NH": calculateLead(52, 47), // New Hampshire
     "NJ": calculateLead(41, 36), // New Jersey
@@ -47,13 +47,13 @@ var statePolls = {
     "SC": calculateLead(37, 51), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
     "TN": calculateLead(28, 58), // Tennessee
-    "TX": calculateLead(45, 50), // Texas
+    "TX": calculateLead(47,53), // Texas
     "UT": calculateLead(28, 60), // Utah
     "VT": calculateLead(70, 29), // Vermont
     "VA": calculateLead(49, 46), // Virginia
-    "WA": calculateLead(40, 37), // Washington
+    "WA": calculateLead(51.3,35.8), // Washington
     "WV": calculateLead(28, 55), // West Virginia
-    "WI": calculateLead(48, 44.1), // Wisconsin
+    "WI": calculateLead(47.9,44.3), // Wisconsin
     "WY": calculateLead(15, 68), // Wyoming
     "DC": calculateLead(85, 5.8)  // Washington, D.C.
 };
@@ -68,25 +68,83 @@ for(let i = 0; i < loopLength; i++)
 
 function calculateLead(dem, rep) 
 {
-    let lead, margin;
-    margin = 5;
+    let lead, margin, color;
+
+    margin = 4.5;
+    lead = 0;//0 by default -> tie
+
     if (dem > rep)
     {
         lead = dem - rep;
         if (lead > margin)
-            return ["#1259E6", lead];
+            color = "#71A8EB";
         else
-            return ["#71A8EB", lead];
+            color = "#D2E0FB";
     } 
     else if (rep > dem)
     {
         lead = rep - dem;
         if (lead > margin)
-            return ["#E61237", lead];
+            color = "#d27776";
         else
-            return ["#EA7195", lead];
+            color = "#ffc5c4";
     }
     else
-       return ["#DE71EB", 0];
+       color = "#DE71EB";
+
+    return [color, lead, dem, rep];
 
 }//end calculateLead
+
+
+//Display info
+
+//states array
+const hoverSquare = document.getElementById('hover-square');
+const svgMap = document.getElementById('map');
+
+// Cache the bounding rectangle of the SVG map
+const svgRect = svgMap.getBoundingClientRect();
+
+svgMap.addEventListener('mouseover', function (e) 
+{
+    let colorLead, colorDem, colorRep;
+
+    colorDem =  "#71A8EB";
+    colorRep = "#d27776";
+    // Check if the target is a 'path' element
+    if (e.target.tagName === 'path') 
+    {
+        // Get State ID 
+        let stateId = e.target.id;
+
+        if (statePolls[stateId][0] == "#d27776" || statePolls[stateId][0] == "#ffc5c4")
+            colorLead = "#d27776";
+        else
+            colorLead = "#71A8EB";
+
+        hoverSquare.innerHTML = 
+        `<div style="text-align: center;" style = "border-style: solid;"><span style="color: ${colorLead};">+${Math.round((statePolls[stateId][1] + Number.EPSILON) * 100) / 100}</span>` +
+        `<br><br>` +
+        `<span style="color: ${colorDem};">Harris: ${statePolls[stateId][2]}</span>` +
+        `<br><br>` +
+        `<span style="color: ${colorRep};">Trump: ${statePolls[stateId][3]}</span></div>`;
+
+        // Get mouse position relative to the SVG container
+        const mouseX = e.clientX - svgRect.left + 150;
+        const mouseY = e.clientY - svgRect.top;
+
+        // Position the square and make it visible
+        hoverSquare.style.left = mouseX + 'px';
+        hoverSquare.style.top = mouseY + 'px';
+        hoverSquare.style.display = 'block';
+
+    }//end if
+});
+
+svgMap.addEventListener('mouseout', function (e) 
+{
+    // Check if the target is a 'path' element
+    if (e.target.tagName === 'path') 
+        hoverSquare.style.display = 'none';
+});

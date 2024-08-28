@@ -5,3 +5,32 @@ svg {
     margin-left: auto;
     margin-right: auto;
 }
+
+path{
+    stroke: white;
+    stroke-width: 2;
+    fill: lightgray;
+}
+
+#map-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#hover-square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(223, 223, 223);
+    pointer-events: none;
+    display: none; 
+}
+
+text{
+    user-select: none;
+    font-family:"system-ui";
+    font-size:5; 
+    fill:black;
+}
