@@ -12,14 +12,14 @@ const loopLength = statesArray.length;
 var statePolls = {
     "AL": calculateLead(38,57), // Alabama
     "AK": calculateLead(36,55), // Alaska
-    "AZ": calculateLead(44.1, 45.8), // Arizona
+    "AZ": calculateLead(47.5, 47), // Arizona
     "AR": calculateLead(24,57), // Arkansas
     "CA": calculateLead(65,35), // California
     "CO": calculateLead(49,39), // Colorado
     "CT": calculateLead(46,36), // Connecticut
     "DE": calculateLead(46,36), // Delaware
-    "FL": calculateLead(43.4,47.8), // Florida
-    "GA": calculateLead(45.8, 46.6), // Georgia
+    "FL": calculateLead(44.8,49.3), // Florida
+    "GA": calculateLead(48.1, 47.8), // Georgia
     "HI": calculateLead(42, 34), // Hawaii
     "ID": calculateLead(26, 55), // Idaho
     "IL": calculateLead(43, 34), // Illinois
@@ -31,23 +31,23 @@ var statePolls = {
     "ME": calculateLead(52, 47), // Maine
     "MD": calculateLead(56, 30), // Maryland
     "MA": calculateLead(47, 29), // Massachusetts
-    "MI": calculateLead(46.9, 43.5), // Michigan
-    "MN": calculateLead(49.6, 40.4), // Minnesota
+    "MI": calculateLead(48.5, 45.6), // Michigan
+    "MN": calculateLead(49.7, 41), // Minnesota
     "MS": calculateLead(37, 49), // Mississippi
     "MO": calculateLead(41, 59), // Missouri
     "MT": calculateLead(39, 57), // Montana
     "NE": calculateLead(42, 50), // Nebraska
-    "NV": calculateLead(44.4, 45.2), // Nevada
-    "NH": calculateLead(52, 47), // New Hampshire
+    "NV": calculateLead(48, 46.2), // Nevada
+    "NH": calculateLead(51.6, 44.4), // New Hampshire
     "NJ": calculateLead(41, 36), // New Jersey
     "NM": calculateLead(51, 40), // New Mexico
     "NY": calculateLead(58, 42), // New York
-    "NC": calculateLead(45.7, 45.8), // North Carolina
+    "NC": calculateLead(47.8, 47.8), // North Carolina
     "ND": calculateLead(28, 62), // North Dakota
     "OH": calculateLead(44, 56), // Ohio
     "OK": calculateLead(30, 61), // Oklahoma
     "OR": calculateLead(45, 40), // Oregon
-    "PA": calculateLead(46.7, 44.9), // Pennsylvania
+    "PA": calculateLead(48.1, 46.5), // Pennsylvania
     "RI": calculateLead(40, 33), // Rhode Island
     "SC": calculateLead(37, 51), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
@@ -55,12 +55,17 @@ var statePolls = {
     "TX": calculateLead(47,53), // Texas
     "UT": calculateLead(28, 60), // Utah
     "VT": calculateLead(70, 29), // Vermont
-    "VA": calculateLead(49, 46), // Virginia
+    "VA": calculateLead(48, 42.1), // Virginia
     "WA": calculateLead(51.3,35.8), // Washington
     "WV": calculateLead(28, 55), // West Virginia
-    "WI": calculateLead(47.9,44.3), // Wisconsin
+    "WI": calculateLead(49.1,46.6), // Wisconsin
     "WY": calculateLead(15, 68), // Wyoming
-    "DC": calculateLead(85, 5.8)  // Washington, D.C.
+    "DC": calculateLead(85, 5.8),  // Washington, D.C.
+    "NE1": calculateLead(1, 99), 
+    "NE2": calculateLead(71.2, 28.8), 
+    "NE3": calculateLead( 1 ,99), 
+    "ME1": calculateLead(1.1, 98.9), 
+    "ME2": calculateLead(71, 29) 
 };
 
 //EC count per state
@@ -83,7 +88,7 @@ var stateEC = {
     "KS": 6,
     "KY": 8,
     "LA": 8,
-    "ME": 4,
+    "ME": 2,
     "MD": 10,
     "MA": 11,
     "MI": 15,
@@ -91,7 +96,7 @@ var stateEC = {
     "MS": 6,
     "MO": 10,
     "MT": 4,
-    "NE": 5,
+    "NE": 2,
     "NV": 6,
     "NH": 4,
     "NJ": 14,
@@ -115,7 +120,12 @@ var stateEC = {
     "WV": 4,
     "WI": 10,
     "WY": 3,
-    "DC": 3
+    "DC": 3,
+    "NE1": 1, 
+    "NE2": 1, 
+    "NE3": 1, 
+    "ME1": 1, 
+    "ME2": 1 
 };
 
 //Change state color based on lead
@@ -180,15 +190,21 @@ svgMap.addEventListener('mouseover', function (e)
 
         if (statePolls[stateId][0] == "#d27776" || statePolls[stateId][0] == "#ffc5c4")
             colorLead = "#d27776";
-        else
+        else if (statePolls[stateId][0] == "#71A8EB" || statePolls[stateId][0] == "#D2E0FB")
             colorLead = "#71A8EB";
+        else
+        colorLead = "#DE71EB";
 
         hoverSquare.innerHTML = 
-        `<div style="text-align: center;" style = "border-style: solid;"><span style="color: ${colorLead};">+${Math.round((statePolls[stateId][1] + Number.EPSILON) * 100) / 100}</span>` +
-        `<br><br>` +
-        `<span style="color: ${colorDem};">Harris: ${statePolls[stateId][2]}</span>` +
-        `<br><br>` +
-        `<span style="color: ${colorRep};">Trump: ${statePolls[stateId][3]}</span></div>`;
+        `<div style="text-align: center;" style = "border-style: solid;">
+            <span>${stateId}: ${stateEC[stateId]} vote(s)</span><br><br>
+            <span style="color: ${colorLead};">+${Math.round((statePolls[stateId][1] + Number.EPSILON) * 100) / 100}</span>` +
+            `<br><br>` +
+            `<span style="color: ${colorDem};">Harris: ${statePolls[stateId][2]}</span>` +
+            `<br><br>` +
+            `<span style="color: ${colorRep};">Trump: ${statePolls[stateId][3]}</span></div>` +
+            `<br><br>` +
+        `</div>`;
 
         // Get mouse position relative to the SVG container
         const mouseX = e.clientX - svgRect.left + 360;
@@ -228,17 +244,15 @@ elem.style.width = width + "%";
 if(demVotes >=  270)
 {
     demColor = "#ace0af";
-    demText = "(Favored to Win)";
-}//end demVotes
+    demText = "(✔)";
+}//end if
     
 if(repVotes >=  270)
 {
 
     repColor = "#ace0af";
-    repText =  "(Favored to Win)";
-}
-    
-
+    repText =  "(✔)";
+}//end if
 
 
 document.getElementById("dems-lead").style.color = demColor;
