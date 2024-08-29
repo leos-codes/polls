@@ -1,4 +1,6 @@
-let DemVotes = 0;
+let demVotes = 0, repVotes = 0;
+let demColor = "black", repColor = "black";
+let demText = "", repText = "";
 
 //Get States' IDs
 const mapSvg = document.getElementById("map");
@@ -10,14 +12,14 @@ const loopLength = statesArray.length;
 var statePolls = {
     "AL": calculateLead(38,57), // Alabama
     "AK": calculateLead(36,55), // Alaska
-    "AZ": calculateLead(45.8,44.1), // Arizona
+    "AZ": calculateLead(44.1, 45.8), // Arizona
     "AR": calculateLead(24,57), // Arkansas
     "CA": calculateLead(65,35), // California
     "CO": calculateLead(49,39), // Colorado
     "CT": calculateLead(46,36), // Connecticut
     "DE": calculateLead(46,36), // Delaware
     "FL": calculateLead(43.4,47.8), // Florida
-    "GA": calculateLead(46.6, 45.8), // Georgia
+    "GA": calculateLead(45.8, 46.6), // Georgia
     "HI": calculateLead(42, 34), // Hawaii
     "ID": calculateLead(26, 55), // Idaho
     "IL": calculateLead(43, 34), // Illinois
@@ -35,17 +37,17 @@ var statePolls = {
     "MO": calculateLead(41, 59), // Missouri
     "MT": calculateLead(39, 57), // Montana
     "NE": calculateLead(42, 50), // Nebraska
-    "NV": calculateLead(45.2, 44.4), // Nevada
+    "NV": calculateLead(44.4, 45.2), // Nevada
     "NH": calculateLead(52, 47), // New Hampshire
     "NJ": calculateLead(41, 36), // New Jersey
     "NM": calculateLead(51, 40), // New Mexico
     "NY": calculateLead(58, 42), // New York
-    "NC": calculateLead(45.8, 45.7), // North Carolina
+    "NC": calculateLead(45.7, 45.8), // North Carolina
     "ND": calculateLead(28, 62), // North Dakota
     "OH": calculateLead(44, 56), // Ohio
     "OK": calculateLead(30, 61), // Oklahoma
     "OR": calculateLead(45, 40), // Oregon
-    "PA": calculateLead(44.9, 46.7), // Pennsylvania
+    "PA": calculateLead(46.7, 44.9), // Pennsylvania
     "RI": calculateLead(40, 33), // Rhode Island
     "SC": calculateLead(37, 51), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
@@ -189,7 +191,7 @@ svgMap.addEventListener('mouseover', function (e)
         `<span style="color: ${colorRep};">Trump: ${statePolls[stateId][3]}</span></div>`;
 
         // Get mouse position relative to the SVG container
-        const mouseX = e.clientX - svgRect.left + 150;
+        const mouseX = e.clientX - svgRect.left + 360;
         const mouseY = e.clientY - svgRect.top;
 
         // Position the square and make it visible
@@ -214,11 +216,34 @@ for(let i = 0; i < loopLength; i++)
 {
     let state = statesArray[i];
     if(statePolls[state][0] == "#71A8EB" || statePolls[state][0] == "#D2E0FB" )
-        DemVotes += stateEC[state];
+        demVotes += stateEC[state];
 
 }//end for-loop
-
+repVotes = 538 - demVotes;
 
 var elem = document.getElementById("toWinBar");
-var width = DemVotes * 100 / 538;
+var width = demVotes * 100 / 538;
 elem.style.width = width + "%";
+
+if(demVotes >=  270)
+{
+    demColor = "#ace0af";
+    demText = "(Favored to Win)";
+}//end demVotes
+    
+if(repVotes >=  270)
+{
+
+    repColor = "#ace0af";
+    repText =  "(Favored to Win)";
+}
+    
+
+
+
+document.getElementById("dems-lead").style.color = demColor;
+document.getElementById("rep-lead").style.color = repColor;
+
+
+document.getElementById("dems-lead").innerHTML = `Harris ${demText}:<br><span >${demVotes}</span>`;
+document.getElementById("rep-lead").innerHTML = `Trump ${repText}:<br><span>${repVotes}</span>`;
