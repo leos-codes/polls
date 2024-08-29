@@ -34,7 +34,7 @@ path{
 
 text{
     user-select: none;
-    font-family:"system-ui";
+    font-family:"Segoe UI";
     font-size:5; 
     fill:black;
     font-weight: bold;
@@ -57,7 +57,7 @@ text{
     user-select: none;
     display: inline-block;
     vertical-align: middle;
-    font-family:"system-ui";
+    font-family:"Segoe UI";
     font-weight: bold;
 }
 
