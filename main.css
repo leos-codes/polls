@@ -68,3 +68,14 @@ text{
     align-items: center;
     
 }
+
+body
+{
+    text-align: center;
+}
+
+#last-up
+{
+    user-select: none;
+    font-family:"Segoe UI";
+}
