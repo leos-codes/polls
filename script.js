@@ -12,17 +12,18 @@ const loopLength = statesArray.length;
 var statePolls = {
 
     // Battleground states
-    "AZ": calculateLead(47.6, 47.2), // Arizona
-    "FL": calculateLead(44.6, 49.3), // Florida
-    "GA": calculateLead(47.9, 47.6), // Georgia
-    "MI": calculateLead(48.4, 46.2), // Michigan
-    "MN": calculateLead(50.8, 41.8), // Minnesota
-    "NV": calculateLead(48.2, 46.6), // Nevada
-    "NH": calculateLead(51.8, 44.7), // New Hampshire
-    "NC": calculateLead(47.7, 47.7), // North Carolina
-    "PA": calculateLead(48.4, 46.6), // Pennsylvania
-    "VA": calculateLead(48.2, 42.7), // Virginia
-    "WI": calculateLead(49.6, 46.2), // Wisconsin
+    //state: calculateLead (Dem, Rep)
+    "AZ": calculateLead(47.9, 48.5), // Arizona
+    "FL": calculateLead(44.7, 49.4), // Florida
+    "GA": calculateLead(48.3, 47.4), // Georgia
+    "MI": calculateLead(48.3, 46.4), // Michigan
+    "MN": calculateLead(49.9, 42.2), // Minnesota
+    "NV": calculateLead(48.6, 47.7), // Nevada
+    "NH": calculateLead(51.8, 44.8), // New Hampshire
+    "NC": calculateLead(48, 48.4), // North Carolina
+    "PA": calculateLead(48.2, 46.9), // Pennsylvania
+    "VA": calculateLead(48.3, 42.7), // Virginia
+    "WI": calculateLead(49.4, 46.2), // Wisconsin
     //meh states
     "AL": calculateLead(38,57), // Alabama
     "AK": calculateLead(36,55), // Alaska
