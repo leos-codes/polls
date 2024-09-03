@@ -1,3 +1,6 @@
+//Date updated
+document.getElementById('last-up').innerText = "Last update: Sep 3rd, 24; 1:51pm";
+
 let demVotes = 0, repVotes = 0;
 let demColor = "black", repColor = "black";
 let demText = "", repText = "";
@@ -6,9 +9,9 @@ let demText = "", repText = "";
 const mapSvg = document.getElementById("map");
 const states = mapSvg.querySelectorAll('[id]');
 const statesArray = Array.from(states).map(element => element.id);
+const battlegroundArray = ["MN-map-battleground", "MI-map-battleground", "WI-map-battleground", "PA-map-battleground", "VA-map-battleground", "NV-map-battleground", "AZ-map-battleground", "GA-map-battleground", "NC-map-battleground"];
 const loopLength = statesArray.length;
 
-//State status based on polls
 var statePolls = {
 
     // Battleground states
@@ -132,7 +135,16 @@ var stateEC = {
     "ME2": 1 
 };
 
-//Change state color based on lead
+//CAHNGE STATE COLOR BASED ON THE LEAD
+
+//Modile version
+for(let i = 0; i < 9; i++)
+{
+    let state = battlegroundArray[i];
+    document.getElementById(state).style.fill = statePolls[state.slice(0,2)][0];
+}//end for loop
+
+//Computer version
 for(let i = 0; i < loopLength; i++)
 {
     let state = statesArray[i];
@@ -171,13 +183,15 @@ function calculateLead(dem, rep)
 }//end calculateLead
 
 
-//Display info
+//DISPLAY INFO
 
 //states array
 const hoverSquare = document.getElementById('hover-square');
+
+//SVG ID = map
 const svgMap = document.getElementById('map');
 
-// Cache the bounding rectangle of the SVG map
+// Cache the bounding rectangle of the SVG ID = map
 const svgRect = svgMap.getBoundingClientRect();
 
 svgMap.addEventListener('mouseover', function (e) 
@@ -229,8 +243,65 @@ svgMap.addEventListener('mouseout', function (e)
         hoverSquare.style.display = 'none';
 });
 
+//SVG ID = battleground-states
+const svgBgMap = document.getElementById('map-battleground');
 
-//Show 270 to win
+// Cache the bounding rectangle of the SVG ID = battleground-states
+const svgRectBg = svgBgMap.getBoundingClientRect();
+
+svgBgMap.addEventListener('mouseover', function (e) 
+{
+
+    let colorLead, colorDem, colorRep;
+
+    colorDem =  "#71A8EB";
+    colorRep = "#d27776";
+    // Check if the target is a 'path' element
+    if (e.target.tagName === 'path') 
+    {
+        // Get State ID 
+        let stateId = String(e.target.id).slice(0,2);
+        
+        if (statePolls[stateId][0] == "#d27776" || statePolls[stateId][0] == "#ffc5c4")
+            colorLead = "#d27776";
+        else if (statePolls[stateId][0] == "#71A8EB" || statePolls[stateId][0] == "#D2E0FB")
+            colorLead = "#71A8EB";
+        else
+            colorLead = "#DE71EB";
+
+        hoverSquare.innerHTML = 
+        `<div style="text-align: center;" style = "border-style: solid;">
+            <span>${stateId}: ${stateEC[stateId]} vote(s)</span><br><br>
+            <span style="color: ${colorLead};">+${Math.round((statePolls[stateId][1] + Number.EPSILON) * 100) / 100}</span>` +
+            `<br><br>` +
+            `<span style="color: ${colorDem};">Harris: ${statePolls[stateId][2]}</span>` +
+            `<br><br>` +
+            `<span style="color: ${colorRep};">Trump: ${statePolls[stateId][3]}</span></div>` +
+            `<br><br>` +
+        `</div>`;
+
+        // Get mouse position relative to the SVG container
+        const mouseX = e.clientX - svgRectBg.left;
+        const mouseY = e.clientY - svgRectBg.top;
+
+        // Position the square and make it visible
+        hoverSquare.style.left = mouseX + 'px';
+        hoverSquare.style.top = mouseY + 'px';
+        hoverSquare.style.display = 'block';
+
+    }//end if
+});
+
+svgBgMap.addEventListener('mouseout', function (e) 
+{
+    // Check if the target is a 'path' element
+    if (e.target.tagName === 'path') 
+        hoverSquare.style.display = 'none';
+});
+
+
+//SHOW 270 TO WIN
+
 //Change state color based on lead
 for(let i = 0; i < loopLength; i++)
 {
