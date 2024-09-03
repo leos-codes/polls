@@ -1,10 +1,33 @@
-svg {
-    height: 604px;
-    width: 1000px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+@media (max-width: 1000px) { 
+    #full-map { display: none; } 
+    #battleground-states { display: block; }
+    svg {
+        
+        width: 470px; 
+        height: 2100px;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+    
 }
+
+@media (min-width: 1001px) {
+    #full-map { display: block; } 
+    #battleground-states { display: none; } 
+    svg {
+        
+        height: 604px;
+        width: 1000px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+
+
 
 path{
     stroke: white;
