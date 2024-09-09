@@ -61,7 +61,7 @@ var statePolls = {
     "SC": calculateLead(37, 51), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
     "TN": calculateLead(28, 58), // Tennessee
-    "TX": calculateLead(48.5, 43.9), // Texas
+    "TX": calculateLead(43.9, 48.5), // Texas
     "UT": calculateLead(28, 60), // Utah
     "VT": calculateLead(70, 29), // Vermont
     "WA": calculateLead(52.5, 38.2), // Washington
