@@ -16,7 +16,7 @@ var statePolls = {
 
     // Battleground states
     //state: calculateLead (Dem, Rep)
-    "AZ": calculateLead(48, 47), // Arizona
+    "AZ": calculateLead(47, 48), // Arizona
     "FL": calculateLead(49.8, 45.7), // Florida
     "GA": calculateLead(47.5, 48.1), // Georgia
     "MI": calculateLead(48.2, 46.3), // Michigan
