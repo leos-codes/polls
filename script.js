@@ -1,5 +1,5 @@
 //Date updated
-document.getElementById('last-up').innerText = "Last update: Oct 7th, 24; 2:31pm";
+document.getElementById('last-up').innerText = "Last update: Oct 8th, 24; 1:37pm";
 
 let demVotes = 0, repVotes = 0;
 let demColor = "black", repColor = "black";
@@ -16,16 +16,16 @@ var statePolls = {
 
     // Battleground states
     //state: calculateLead (Dem, Rep)
-    "AZ": calculateLead(47.5, 48.6), // Arizona
+    "AZ": calculateLead(45, 50.5), // Arizona
     "FL": calculateLead(46.4, 49.7), // Florida
-    "GA": calculateLead(47.8, 48.6), // Georgia
-    "MI": calculateLead(48.8, 46.8), // Michigan
-    "MN": calculateLead(49.9, 44), // Minnesota
-    "NV": calculateLead(49, 47.2), // Nevada
+    "GA": calculateLead(47.9, 48.8), // Georgia
+    "MI": calculateLead(48.6, 46.7), // Michigan
+    "MN": calculateLead(50.2, 43.8), // Minnesota
+    "NV": calculateLead(49.1, 47.3), // Nevada
     "NH": calculateLead(51.5, 44.2), // New Hampshire
-    "NC": calculateLead(48, 48.4), // North Carolina
+    "NC": calculateLead(47.9, 48.6), // North Carolina
     "PA": calculateLead(48.8, 47.5), // Pennsylvania
-    "VA": calculateLead(50.6, 43.1), // Virginia
+    "VA": calculateLead(50.9, 42.4), // Virginia
     "WI": calculateLead(49.4, 47.4), // Wisconsin
     //meh states
     "AL": calculateLead(38,57), // Alabama
@@ -38,38 +38,38 @@ var statePolls = {
     "HI": calculateLead(42, 34), // Hawaii
     "ID": calculateLead(26, 55), // Idaho
     "IL": calculateLead(43, 34), // Illinois
-    "IN": calculateLead(40.0, 56.2), // Indiana
+    "IN": calculateLead(40.0, 56.1), // Indiana
     "IA": calculateLead(39, 51), // Iowa
     "KS": calculateLead(31, 47), // Kansas
     "KY": calculateLead(26, 55), // Kentucky
     "LA": calculateLead(33, 48), // Louisiana
     "ME": calculateLead(52, 47), // Maine
-    "MD": calculateLead(63.2, 33), // Maryland
-    "MA": calculateLead(47, 29), // Massachusetts
+    "MD": calculateLead(63.2, 32.9), // Maryland
+    "MA": calculateLead(61.5, 61.5), // Massachusetts
     "MS": calculateLead(37, 49), // Mississippi
-    "MO": calculateLead(42.6, 54.2), // Missouri
+    "MO": calculateLead(42.5, 54.1), // Missouri
     "MT": calculateLead(39.9, 56.7), // Montana
     "NE": calculateLead(39.7, 54.8), // Nebraska
     "NJ": calculateLead(41, 36), // New Jersey
-    "NM": calculateLead(50.5, 42), // New Mexico
+    "NM": calculateLead(50.4, 42), // New Mexico
     "NY": calculateLead(58, 42), // New York
     "ND": calculateLead(28, 62), // North Dakota
-    "OH": calculateLead(43.8, 51.9), // Ohio
+    "OH": calculateLead(43.7, 51.9), // Ohio
     "OK": calculateLead(30, 61), // Oklahoma
     "OR": calculateLead(45, 40), // Oregon
-    "RI": calculateLead(54.3, 39.3), // Rhode Island
+    "RI": calculateLead(54.2, 39.2), // Rhode Island
     "SC": calculateLead(37, 51), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
     "TN": calculateLead(28, 58), // Tennessee
-    "TX": calculateLead(45.6, 51.5), // Texas
+    "TX": calculateLead(44.8, 51.0), // Texas
     "UT": calculateLead(28, 60), // Utah
     "VT": calculateLead(70, 29), // Vermont
-    "WA": calculateLead(53.6, 36.1), // Washington
+    "WA": calculateLead(53.6, 36.0), // Washington
     "WV": calculateLead(28, 55), // West Virginia
     "WY": calculateLead(15, 68), // Wyoming
     "DC": calculateLead(85, 5.8),  // Washington, D.C.
     "NE1": calculateLead(1, 99), 
-    "NE2": calculateLead(51.6, 42.7), 
+    "NE2": calculateLead(51.6, 42.6), 
     "NE3": calculateLead( 1 ,99), 
     "ME1": calculateLead(1.1, 98.9), 
     "ME2": calculateLead(71, 29) 
