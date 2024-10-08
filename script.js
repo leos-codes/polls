@@ -16,7 +16,7 @@ var statePolls = {
 
     // Battleground states
     //state: calculateLead (Dem, Rep)
-    "AZ": calculateLead(45, 50.5), // Arizona
+    "AZ": calculateLead(47.3, 48.8), // Arizona
     "FL": calculateLead(46.4, 49.7), // Florida
     "GA": calculateLead(47.9, 48.8), // Georgia
     "MI": calculateLead(48.6, 46.7), // Michigan
@@ -45,7 +45,7 @@ var statePolls = {
     "LA": calculateLead(33, 48), // Louisiana
     "ME": calculateLead(52, 47), // Maine
     "MD": calculateLead(63.2, 32.9), // Maryland
-    "MA": calculateLead(61.5, 61.5), // Massachusetts
+    "MA": calculateLead(61.5, 32.3), // Massachusetts
     "MS": calculateLead(37, 49), // Mississippi
     "MO": calculateLead(42.5, 54.1), // Missouri
     "MT": calculateLead(39.9, 56.7), // Montana
