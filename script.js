@@ -1,5 +1,5 @@
 //Date updated
-document.getElementById('last-up').innerText = "Last update: Nov 1st, 24; 12:46pm";
+document.getElementById('last-up').innerText = "Last update: Nov 2nd, 24; 9:35pm";
 
 let demVotes = 0, repVotes = 0;
 let demColor = "black", repColor = "black";
@@ -16,17 +16,17 @@ var statePolls = {
 
     // Battleground states
     //state: calculateLead (Dem, Rep)
-    "AZ": calculateLead(46.8, 49), // Arizona
+    "AZ": calculateLead(46.9, 49), // Arizona
     "FL": calculateLead(44.5, 51.1), // Florida
-    "GA": calculateLead(47.4, 49.1), // Georgia
-    "MI": calculateLead(48.4, 47.2), // Michigan
+    "GA": calculateLead(47.5, 49.0), // Georgia
+    "MI": calculateLead(48.5, 47.2), // Michigan
     "MN": calculateLead(50.8, 44), // Minnesota
-    "NV": calculateLead(47.7, 48.3), // Nevada
-    "NH": calculateLead(51.2, 46.0), // New Hampshire
+    "NV": calculateLead(47.9, 48.2), // Nevada
+    "NH": calculateLead(51.2, 45.9), // New Hampshire
     "NC": calculateLead(47.5, 48.7), // North Carolina
-    "PA": calculateLead(47.8, 48.4), // Pennsylvania
-    "VA": calculateLead(50.0, 43.5), // Virginia
-    "WI": calculateLead(48.6, 47.8), // Wisconsin
+    "PA": calculateLead(48, 48.3), // Pennsylvania
+    "VA": calculateLead(50.3, 42.9), // Virginia
+    "WI": calculateLead(48.6, 47.7), // Wisconsin
     //meh states
     "AL": calculateLead(38,57), // Alabama
     "AK": calculateLead(43.6, 52.4), // Alaska
