@@ -1,5 +1,5 @@
 //Date updated
-document.getElementById('last-up').innerText = "Last update: Nov 2nd, 24; 9:35pm";
+document.getElementById('last-up').innerText = "Last update: Nov 3rd, 24; 9:56am";
 
 let demVotes = 0, repVotes = 0;
 let demColor = "black", repColor = "black";
@@ -16,63 +16,63 @@ var statePolls = {
 
     // Battleground states
     //state: calculateLead (Dem, Rep)
-    "AZ": calculateLead(46.9, 49), // Arizona
+    "AZ": calculateLead(46.7, 49.1), // Arizona
     "FL": calculateLead(44.5, 51.1), // Florida
-    "GA": calculateLead(47.5, 49.0), // Georgia
-    "MI": calculateLead(48.5, 47.2), // Michigan
-    "MN": calculateLead(50.8, 44), // Minnesota
+    "GA": calculateLead(47.5, 48.8), // Georgia
+    "MI": calculateLead(48.3, 47.2), // Michigan
+    "MN": calculateLead(50.4, 43.8), // Minnesota
     "NV": calculateLead(47.9, 48.2), // Nevada
-    "NH": calculateLead(51.2, 45.9), // New Hampshire
-    "NC": calculateLead(47.5, 48.7), // North Carolina
-    "PA": calculateLead(48, 48.3), // Pennsylvania
-    "VA": calculateLead(50.3, 42.9), // Virginia
+    "NH": calculateLead(51.1, 46), // New Hampshire
+    "NC": calculateLead(47.5, 48.6), // North Carolina
+    "PA": calculateLead(47.9, 48.3), // Pennsylvania
+    "VA": calculateLead(49.5, 43.2), // Virginia
     "WI": calculateLead(48.6, 47.7), // Wisconsin
     //meh states
     "AL": calculateLead(38,57), // Alabama
     "AK": calculateLead(43.6, 52.4), // Alaska
     "AR": calculateLead(24,57), // Arkansas
-    "CA": calculateLead(59.5, 35.0), // California
+    "CA": calculateLead(58, 33.9), // California
     "CO": calculateLead(49,39), // Colorado
     "CT": calculateLead(46,36), // Connecticut
     "DE": calculateLead(46,36), // Delaware
     "HI": calculateLead(42, 34), // Hawaii
     "ID": calculateLead(26, 55), // Idaho
     "IL": calculateLead(43, 34), // Illinois
-    "IN": calculateLead(39.6, 56.8), // Indiana
-    "IA": calculateLead(39, 51), // Iowa
+    "IN": calculateLead(39.6, 56.9), // Indiana
+    "IA": calculateLead(45.4, 48.8), // Iowa
     "KS": calculateLead(31, 47), // Kansas
     "KY": calculateLead(26, 55), // Kentucky
     "LA": calculateLead(33, 48), // Louisiana
-    "ME": calculateLead(50.8, 42.6), // Maine
-    "MD": calculateLead(61.9, 33.6), // Maryland
-    "MA": calculateLead(60.1, 34.9), // Massachusetts
+    "ME": calculateLead(50.9, 43), // Maine
+    "MD": calculateLead(60.7, 33.1), // Maryland
+    "MA": calculateLead(60.5, 33.5), // Massachusetts
     "MS": calculateLead(37, 49), // Mississippi
-    "MO": calculateLead(42.0, 54.8), // Missouri
+    "MO": calculateLead(41, 54.5), // Missouri
     "MT": calculateLead(38.7, 57.3), // Montana
-    "NE": calculateLead(39.6, 55.1), // Nebraska
+    "NE": calculateLead(39.4, 55.2), // Nebraska
     "NJ": calculateLead(41, 36), // New Jersey
-    "NM": calculateLead(50.0, 43.4), // New Mexico
-    "NY": calculateLead(56.0, 39.4), // New York
+    "NM": calculateLead(50.1, 43.5), // New Mexico
+    "NY": calculateLead(56.0, 39.6), // New York
     "ND": calculateLead(28, 62), // North Dakota
-    "OH": calculateLead(45.3, 51.1), // Ohio
+    "OH": calculateLead(45.2, 51.4), // Ohio
     "OK": calculateLead(30, 61), // Oklahoma
     "OR": calculateLead(45, 40), // Oregon
-    "RI": calculateLead(53.8, 39.1), // Rhode Island
-    "SC": calculateLead(37, 51), // South Carolina
+    "RI": calculateLead(53.8, 39.3), // Rhode Island
+    "SC": calculateLead(42, 53.6), // South Carolina
     "SD": calculateLead(37, 51), // South Dakota
     "TN": calculateLead(28, 58), // Tennessee
-    "TX": calculateLead(44.3, 51.3), // Texas
-    "UT": calculateLead(32.6, 58.2), // Utah
+    "TX": calculateLead(44.2, 51.4), // Texas
+    "UT": calculateLead(32.6, 58.3), // Utah
     "VT": calculateLead(70, 29), // Vermont
-    "WA": calculateLead(54.7, 36.5), // Washington
+    "WA": calculateLead(54.6, 36.7), // Washington
     "WV": calculateLead(28, 55), // West Virginia
     "WY": calculateLead(15, 68), // Wyoming
     "DC": calculateLead(85, 5.8),  // Washington, D.C.
     "NE1": calculateLead(1, 99), 
-    "NE2": calculateLead(52.5, 42.8), 
+    "NE2": calculateLead(52.4, 42.9), 
     "NE3": calculateLead( 1 ,99), 
-    "ME1": calculateLead(58.4, 35.3), 
-    "ME2": calculateLead(43.6, 48.6) 
+    "ME1": calculateLead(58.1, 36.5), 
+    "ME2": calculateLead(43.6, 49) 
 };
 
 //EC count per state
